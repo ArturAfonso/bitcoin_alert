@@ -1,23 +1,33 @@
+import 'package:bitcoin_alert/app/modules/home/components/cart_item.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+  GetStorage storage = GetStorage('storage');
+  RxInt currentIndex = 0.obs;
+  RxBool bottonNavIsloading = false.obs;
+  PageController pageController = PageController(initialPage: 0);
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  List<CardItem> itemsCard = [
+    const CardItem(title: "BTC"),
+    const CardItem(
+      title: "ETH",
+    ),
+    const CardItem(
+      title: "USD",
+    )
+  ];
+
+  void changePage({required int page}) async {
+    print(currentIndex.value);
+
+    bottonNavIsloading.value = true;
+    Future.delayed(const Duration(milliseconds: 100), (() {
+      bottonNavIsloading.value = false;
+    }));
+
+    currentIndex.value = page;
+    pageController.jumpToPage(page);
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

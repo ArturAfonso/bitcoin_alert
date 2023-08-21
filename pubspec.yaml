@@ -7,9 +7,12 @@ environment:
 
 dependencies: 
   cupertino_icons: ^1.0.2
+  carousel_slider: ^4.2.1
   get: 4.6.5
   flutter: 
     sdk: flutter
+  get_storage: ^2.1.1
+  hexcolor: ^3.0.1
 
 dev_dependencies: 
   flutter_lints: 2.0.2
@@ -18,4 +21,12 @@ dev_dependencies:
 
 flutter: 
   uses-material-design: true
+  assets:
+    - assets/icons/casa.png
+    - assets/icons/dinheiro-de-volta.png
+    - assets/icons/do-utilizador.png
+  fonts:
+    - family: SF_Pro_display
+      fonts:
+        - asset: fonts/sf-pro-display-cufonfonts/SFPRODISPLAYBOLD.OTF
 

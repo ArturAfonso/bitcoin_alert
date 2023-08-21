@@ -1,3 +1,7 @@
+import 'package:bitcoin_alert/app/modules/home/components/bottom_bar.dart';
+import 'package:bitcoin_alert/app/modules/home/views/home_tab.dart';
+import 'package:bitcoin_alert/app/modules/market/views/market_view.dart';
+import 'package:bitcoin_alert/app/modules/settings/views/settings_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -9,16 +13,19 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomeView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+      body: PageView(
+          //key: controller.formKeys[controller.currentIndex.value],
+          onPageChanged: (s) {
+            print(s);
+          },
+          controller: controller.pageController,
+          physics: const NeverScrollableScrollPhysics(),
+          children: const [
+            HomeTab(),
+            MarketView(),
+            SettingsView(),
+          ]),
+      bottomNavigationBar: BottomBarHome(),
     );
   }
 }
