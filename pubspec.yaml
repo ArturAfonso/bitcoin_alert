@@ -6,13 +6,17 @@ environment:
   sdk: '>=2.19.6 <3.0.0'
 
 dependencies: 
+
+  awesome_notifications: ^0.7.4+1
   cupertino_icons: ^1.0.2
   carousel_slider: ^4.2.1
   get: 4.6.5
   flutter: 
     sdk: flutter
+  flutter_background_service: ^5.0.1
   get_storage: ^2.1.1
   hexcolor: ^3.0.1
+  http: ^0.13.6
 
 dev_dependencies: 
   flutter_lints: 2.0.2

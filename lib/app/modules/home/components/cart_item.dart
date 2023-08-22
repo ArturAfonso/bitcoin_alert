@@ -14,7 +14,12 @@ class CardItem extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: Colors.blue,
+          gradient: const LinearGradient(
+            colors: [Color.fromARGB(255, 3, 62, 255), Color.fromARGB(255, 228, 167, 0)], // Cores do gradiente
+            begin: Alignment.topLeft, // Ponto de início do gradiente
+            end: Alignment.bottomRight, // Ponto de término do gradiente
+            stops: [0.0, 1.0],
+          ),
           borderRadius: BorderRadius.circular(20), // Define o raio de curvatura
         ),
         child: Text(
