@@ -1,4 +1,3 @@
-import 'package:bitcoin_alert/app/data/shared/services/blockchain_services.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +7,7 @@ import '../controllers/home_controller.dart';
 
 class HomeTab extends GetView<HomeController> {
   const HomeTab({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,24 +43,64 @@ class HomeTab extends GetView<HomeController> {
             ),
             items: controller.itemsCard,
           ),
+          /* Container(
+            margin: const EdgeInsets.only(top: 10),
+            width: 350,
+            height: 300,
+            child: Chart(
+              data: controller.invalidData,
+              variables: {
+                'Date': Variable(
+                  accessor: (Map map) => map['Date'] as String,
+                  scale: OrdinalScale(tickCount: 5),
+                ),
+                'Close': Variable(
+                  accessor: (Map map) => (map['Close'] ?? double.nan) as num,
+                ),
+              },
+              marks: [
+                AreaMark(
+                  shape: ShapeEncode(value: BasicAreaShape(smooth: true)),
+                  color: ColorEncode(value: Defaults.colors10.first.withAlpha(80)),
+                ),
+                LineMark(
+                  shape: ShapeEncode(value: BasicLineShape(smooth: true)),
+                  size: SizeEncode(value: 0.5),
+                ),
+              ],
+              axes: [
+                Defaults.horizontalAxis,
+                Defaults.verticalAxis,
+              ],
+              selections: {
+                'touchMove': PointSelection(
+                  on: {GestureType.scaleUpdate, GestureType.tapDown, GestureType.longPressMoveUpdate},
+                  dim: Dim.x,
+                )
+              },
+              tooltip: TooltipGuide(
+                followPointer: [false, true],
+                align: Alignment.topLeft,
+                offset: const Offset(-20, -20),
+              ),
+              crosshair: CrosshairGuide(followPointer: [false, true]),
+            ),
+          ), */
           ElevatedButton(
               onPressed: () async {
-                var teste = await BlockchainServices().recuperarPreco();
-                print(teste);
-                /*  await NotificationService.showNotification(
-                  // actionType: ActionType.KeepOnTop,
-                  //wakeUpScreen: true,
-                  locked: true,
-                  autoDismissible: false,
-                  id: 2,
-                  title: "Posição na fila: ",
-                  body: "Fila de espera",
-                  //summary: "Sumario pequeno",
-                  //largeIcon: numebers[_posicao],
-                  notificationLayout: NotificationLayout.ProgressBar, /*  progress: _max */
-                ); */
+                //var teste = await BlockchainServices().recuperarPreco();
+                //print(teste);
+                controller.startTimer();
               },
-              child: const Text("Criar notificação"))
+              child: const Text("Criar notificação")),
+          ElevatedButton(
+              onPressed: () async {
+                if (controller.timer.isActive) {
+                  controller.stopTimer();
+                  controller.resetTimer();
+                }
+              },
+              child: const Text("delete notificação"))
         ],
       ),
     );

@@ -7,6 +7,7 @@ environment:
 
 dependencies: 
 
+  android_alarm_manager_plus: ^3.0.2
   awesome_notifications: ^0.7.4+1
   cupertino_icons: ^1.0.2
   carousel_slider: ^4.2.1
@@ -14,9 +15,12 @@ dependencies:
   flutter: 
     sdk: flutter
   flutter_background_service: ^5.0.1
+  graphic: ^2.2.0
   get_storage: ^2.1.1
   hexcolor: ^3.0.1
   http: ^0.13.6
+  intl: ^0.17.0
+  
 
 dev_dependencies: 
   flutter_lints: 2.0.2

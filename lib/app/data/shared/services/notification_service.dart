@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:bitcoin_alert/app/modules/home/views/second_screen.dart';
 import 'package:bitcoin_alert/main.dart';
@@ -6,7 +8,7 @@ import 'package:flutter/material.dart';
 class NotificationService {
   static Future<void> initializeNotification() async {
     await AwesomeNotifications().initialize(
-        'resource://drawable/unimed_logo',
+        'resource://drawable/bitcoin',
         [
           NotificationChannel(
               channelGroupKey: 'high_importance_channel',
@@ -31,11 +33,24 @@ class NotificationService {
             channelShowBadge: true,
             onlyAlertOnce: true,
             playSound: true, /*  locked: true */
+          ),
+          NotificationChannel(
+            channelGroupKey: 'my_foreground',
+            channelKey: 'my_foreground',
+            channelName: 'my_foreground',
+            channelDescription: 'my_foreground',
+            defaultColor: Colors.orange,
+            ledColor: Colors.red,
+            importance: NotificationImportance.Low,
+            channelShowBadge: true,
+            onlyAlertOnce: true,
+            playSound: true, /*  locked: true */
           )
         ],
         channelGroups: [
           NotificationChannelGroup(channelGroupKey: 'high_importance_channel', channelGroupName: 'Group 1'),
           NotificationChannelGroup(channelGroupKey: 'no_lock_channel', channelGroupName: 'Group 2'),
+          NotificationChannelGroup(channelGroupKey: 'my_foreground', channelGroupName: 'Group 3'),
         ],
         debug: true);
 
@@ -106,6 +121,7 @@ class NotificationService {
 
     await AwesomeNotifications().createNotification(
         content: NotificationContent(
+            roundedLargeIcon: true,
             backgroundColor: backgroundColor,
             locked: locked ?? false,
             autoDismissible: autoDismissible ?? true,
