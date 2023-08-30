@@ -20,10 +20,10 @@ class HomeView extends GetView<HomeController> {
           },
           controller: controller.pageController,
           physics: const NeverScrollableScrollPhysics(),
-          children: const [
+          children: [
             HomeTab(),
-            MarketView(),
-            SettingsView(),
+            const MarketView(),
+            const SettingsView(),
           ]),
       bottomNavigationBar: BottomBarHome(),
     );

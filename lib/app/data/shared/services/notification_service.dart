@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:bitcoin_alert/app/modules/home/views/second_screen.dart';
-import 'package:bitcoin_alert/main.dart';
+import 'package:bitcoin_alert/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class NotificationService {
   static Future<void> initializeNotification() async {
@@ -90,7 +90,8 @@ class NotificationService {
     final payload = receivedAction.payload ?? {};
     if (payload['navigate'] == 'true') {
       print("Vindo da notificação");
-      MainApp.navigatorKey.currentState?.push(MaterialPageRoute(builder: (_) => const SecondScreen()));
+      // MainApp.navigatorKey.currentState?.push(MaterialPageRoute(builder: (_) => const HomeView()));
+      Get.toNamed(Routes.HOME);
     }
   }
 
